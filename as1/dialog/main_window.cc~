@@ -1,0 +1,209 @@
+//*****************************************************************************
+// Name: Camara Lerner
+// SN: 001150339
+// Class: CPSC 3770
+// The MainWindow implimentation file for assignment # 1 part 3
+//*****************************************************************************
+#include "main_window.h"
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
+#include <QTextEdit>
+#include <QAction>
+#include <QMenu>
+#include <QMenuBar>
+#include <QStatusBar>
+#include <QToolBar>
+#include <QInputDialog>
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+
+   textEdit = new QTextEdit();
+
+   setCentralWidget(textEdit);
+   connect(textEdit, SIGNAL(textChanged()), this, SLOT(changed()));
+   
+   createActions();
+   createMenus();
+   createToolBar();
+
+   statusBar()->show();
+}
+
+void MainWindow::createActions() {
+
+   //File
+   newAction = new QAction("&New", this);
+   newAction->setShortcut(QKeySequence::New);
+   newAction->setStatusTip("Create a new document");
+   connect(newAction, SIGNAL(triggered()), this, SLOT(createNew()));
+
+   openAction = new QAction("&Open", this);
+   openAction->setShortcut(QKeySequence::Open);
+   openAction->setStatusTip("Opens an existing document");
+   connect(openAction, SIGNAL(triggered()), this, SLOT(open()));
+
+   saveAction = new QAction("&Save", this);
+   saveAction->setShortcut(QKeySequence::Save);
+   saveAction->setStatusTip("Save the open document");
+   connect(saveAction, SIGNAL(triggered()), this, SLOT(save()));
+
+   closeAction = new QAction("E&xit", this);
+   //closeAction->setShortcut(QKeySequence::Close);
+   closeAction->setStatusTip("Closes this window");
+   connect(closeAction, SIGNAL(triggered()), this, SLOT(close()));
+
+   //Edit
+   undoAction = new QAction("&Undo", this);
+   undoAction->setShortcut(QKeySequence::Undo);
+   undoAction->setStatusTip("Undoes the last action");
+   connect(undoAction, SIGNAL(triggered()), textEdit, SLOT(undo()));
+
+   cutAction = new QAction("Cu&t", this);
+   cutAction->setShortcut(QKeySequence::Cut);
+   cutAction->setStatusTip("Cuts the current selected text");
+   connect(cutAction, SIGNAL(triggered()), textEdit, SLOT(cut()));
+
+   copyAction = new QAction("&Copy", this);
+   copyAction->setShortcut(QKeySequence::Copy);
+   copyAction->setStatusTip("Copies the current selected text");
+   connect(copyAction, SIGNAL(triggered()), textEdit, SLOT(copy()));
+
+   pasteAction = new QAction("&Paste", this);
+   pasteAction->setShortcut(QKeySequence::Paste);
+   pasteAction->setStatusTip(
+      "Pastes the last copy or cut text to the text editor");
+   connect(pasteAction, SIGNAL(triggered()), textEdit, SLOT(paste()));
+
+   selectAllAction = new QAction("Select &All", this);
+   selectAllAction->setShortcut(QKeySequence::SelectAll);
+   selectAllAction->setStatusTip("Selects all the text in the document");
+   connect(selectAllAction, SIGNAL(triggered()), textEdit, SLOT(selectAll()));
+   
+   //search
+   findAction = new QAction("&Find", this);
+   findAction->setShortcut(QKeySequence::Find);
+   findAction->setStatusTip("Find the input text");
+   connect(findAction, SIGNAL(triggered()), this, SLOT(find()));
+
+}
+
+void MainWindow::createMenus() {
+
+   QMenu *fileMenu = menuBar()->addMenu("&File");
+   fileMenu->addAction(newAction);
+   fileMenu->addAction(openAction);
+   fileMenu->addAction(saveAction);
+   fileMenu->addSeparator();
+   fileMenu->addAction(closeAction);
+
+   QMenu *editMenu = menuBar()->addMenu("&Edit");
+   editMenu->addAction(undoAction);
+   editMenu->addSeparator();
+   editMenu->addAction(cutAction);
+   editMenu->addAction(copyAction);
+   editMenu->addAction(pasteAction);
+   editMenu->addSeparator();
+   editMenu->addAction(selectAllAction);
+
+   QMenu *searchMenu = menuBar()->addMenu("&Search");
+   searchMenu->addAction(findAction);
+   
+}
+
+void MainWindow::createToolBar() {
+
+   QToolBar *fileToolBar = addToolBar("&File");
+   fileToolBar->addAction(newAction);
+   fileToolBar->addAction(openAction);
+   fileToolBar->addAction(saveAction);
+   
+   QToolBar *editToolBar = addToolBar("&Edit");
+   editToolBar->addAction(undoAction);
+   editToolBar->addAction(cutAction);
+   editToolBar->addAction(copyAction);
+   editToolBar->addAction(pasteAction);
+   
+   QToolBar *searchToolBar = addToolBar("%Search");
+   searchToolBar->addAction(findAction);
+   
+}
+
+bool MainWindow::writeFile(const QString &filename, const QString &text) {
+
+  QFile file(filename);
+  
+  if (!file.open(QIODevice::WriteOnly)) {
+    QMessageBox::warning(this, tr("Unable to save"), 
+       tr("Cannot write file %1: %2").arg(filename).arg(file.errorString()));
+    return false;
+  }
+  
+  QTextStream out(&file);
+  
+  out << text;
+  return true;
+
+}
+
+bool MainWindow::readFile(const QString &filename, QString &text) {
+
+  QFile file(filename);
+  
+  if (!file.open(QIODevice::ReadOnly)) {
+    QMessageBox::warning(this, tr("Unable to read"), 
+       tr("Cannot write file %1: %2").arg(filename).arg(file.errorString()));
+    return false;
+  }
+  
+  QTextStream in(&file);
+  text = in.readAll();
+  return true;
+}
+
+//File
+void MainWindow::createNew() {
+
+   if(fileChanged) {
+      // do something to not lose changes
+   }
+
+   textEdit->selectAll();
+   textEdit->clear();
+   fileChanged = false;
+}
+
+void MainWindow::open() {
+   if(fileChanged) {
+      // do something to not lose changes
+   }
+   // open the file
+   
+   fileChanged = false;
+}
+
+bool MainWindow::save() {
+   if(fileChanged) {
+      // save the file
+   } else {
+      // is up to date
+   }
+   fileChanged = false;
+}
+
+void MainWindow::close() {
+   if(fileChanged) {
+      // save the file
+   }
+   //do something to close
+}
+
+//search
+void MainWindow::find() {
+   QInputDialog *find = new QInputDialog();
+   
+}
+
+void changed() {
+   fileChanged = true;
+}
