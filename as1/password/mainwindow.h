@@ -14,13 +14,13 @@ class QLabel;
 class PasswordEdit;
 class QPushButton;
 
-class MainWindow : public QMainWindow {
+class MainWindowTest : public QMainWindow {
 
   Q_OBJECT
   
 public:
 
-  MainWindow(QWidget *parent=0);
+  MainWindowTest(QWidget *parent=0);
   
 private slots:
 

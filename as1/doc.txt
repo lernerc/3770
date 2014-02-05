@@ -2,10 +2,10 @@ Name: Camara Lerner
 SN: 001150339
 
 Part 1 (Working)
-Files: mainwindow.h, mainwindow.cc, passwordedit.h, passwordedit.cc, test.cc
+Files: mainwindow.h, mainwindow.cpp, passwordedit.h, passwordedit.cpp, test.cpp
 
 Part 2 (Working)
-Files: gauge.h, gauge.cc, testgauge.cc
+Files: gauge.h, gauge.cpp, testgauge.cpp
 
-Part 3
-Files: main_window.h, main_window.cc, test3.cc
+Part 3 (Working)
+Files: main_window.h, main_window.cpp, test3.cpp
