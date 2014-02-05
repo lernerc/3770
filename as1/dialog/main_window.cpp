@@ -5,11 +5,11 @@
 // The MainWindow implementation file for assignment # 1 part 3
 //*****************************************************************************
 #include "main_window.h"
+#include <QAction>
+#include <QTextEdit>
 #include <QFile>
 #include <QMessageBox>
 #include <QTextStream>
-#include <QTextEdit>
-#include <QAction>
 #include <QMenu>
 #include <QMenuBar>
 #include <QStatusBar>
@@ -179,6 +179,8 @@ bool MainWindow::possibleSave() {
 	 }
       } else if(button == QMessageBox::Cancel) {
 	 return false;
+      } else {
+	 return true;
       }
    }
    return true;
@@ -221,6 +223,7 @@ bool MainWindow::save() {
 	 fileChanged = false;
 	 return true;
       }
+      return false;
    } else {
       return false;
    }

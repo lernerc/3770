@@ -10,6 +10,7 @@
 #include <QMainWindow>
 class QAction;
 class QTextEdit;
+
 class MainWindow : public QMainWindow {
 
    Q_OBJECT
@@ -33,7 +34,7 @@ class MainWindow : public QMainWindow {
 
    // would you like to save
    bool possibleSave();
-   
+
   private:
 
    void createActions();
