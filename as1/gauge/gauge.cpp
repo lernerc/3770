@@ -48,7 +48,7 @@ void Gauge::paintEvent(QPaintEvent *event) {
    painter.setWindow(-50, -50, 100, 100);
    double rotate = 270.0/30;
    painter.rotate(225);
-   double ticks = (double)(value - low)/(double)(high - low)*30 + 0.5;
+   int ticks = (int)((double)(value - low)/(double)(high - low)*30 + 0.5) + 1;
    double sum = 0;
    for(; i < ticks; i++) {
       painter.drawRect(0, -48, 1, 5);
