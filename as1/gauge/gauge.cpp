@@ -13,6 +13,7 @@
 Gauge::Gauge(QWidget *parent) : QWidget(parent) {
    value = low = 0;
    high = 100;
+   update();
 }
 
 void Gauge::setRange(int l, int h) {
@@ -51,7 +52,7 @@ void Gauge::paintEvent(QPaintEvent *event) {
    int ticks = (int)((double)(value - low)/(double)(high - low)*30 + 0.5) + 1;
    double sum = 0;
    for(; i < ticks; i++) {
-      painter.drawRect(0, -48, 1, 5);
+      painter.drawLine(0, -48, 0, -43);
       if(i != 30)
 	 painter.rotate(rotate);
    }
@@ -69,7 +70,7 @@ void Gauge::paintEvent(QPaintEvent *event) {
       
    for(; i < 31; i++) {
       sum += rotate;
-      painter.drawRect(0, -48, 1, 5);
+      painter.drawLine(0, -48, 0, -43);
       if(i!=30)
 	 painter.rotate(rotate);
    }
@@ -79,7 +80,7 @@ void Gauge::paintEvent(QPaintEvent *event) {
    pen.setColor(Qt::black);
    painter.setPen(pen);
    painter.rotate((double)(value - low)/(high - low)*270 + 270);
-   painter.drawRect( 0, 0, 1, 40);
+   painter.drawLine(0, 0, 0, 40);
    
 }
    
