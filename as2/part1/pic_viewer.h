@@ -1,6 +1,3 @@
-// Normal Mode
-// Move Mode use setMouseTracking
-// Zoom Mode - each pixel move you multiply by 1.02 so pow(1.02, pixel moves)
 #include <QWidget>
 
 class QImage;
@@ -18,4 +15,7 @@ class PicViewer : public QWidget {
    virtual void paintEvent(QPaintEvent *event);
   private:
    QImage image;
+   QRectF totalImage, want;
+   int mode;
+
 };

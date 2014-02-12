@@ -8,6 +8,7 @@ int main(int argc, char **argv) {
 
   PicViewer *p = new PicViewer();
 
+  // p->loadPic("non-existance");
   p->loadPic("small.jpg");
 
   p->show();
