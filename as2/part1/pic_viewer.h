@@ -1,3 +1,9 @@
+//*****************************************************************************
+// Name: Camara Lerner
+// SN: 001150339
+// Class: CPSC 3770
+// The header for PicViewer for assignment # 2 part 1
+//*****************************************************************************
 #include <QWidget>
 
 class QImage;
@@ -18,5 +24,6 @@ class PicViewer : public QWidget {
    QRectF totalImage, want;
    int mode;
    QPoint cursor;
-
+   QPoint modeStart;
+   QPointF topLeft;
 };
