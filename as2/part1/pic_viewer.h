@@ -17,5 +17,6 @@ class PicViewer : public QWidget {
    QImage image;
    QRectF totalImage, want;
    int mode;
+   QPoint cursor;
 
 };
