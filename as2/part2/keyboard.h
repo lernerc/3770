@@ -4,8 +4,13 @@
 // Class: CPSC 3770
 // The header for Key for assignment # 2 part 2
 //*****************************************************************************
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
+
 #include <QWidget>
+
 #include "key.h"
+
 const int key_max = 12;
 
 class Keyboard : public QWidget {
@@ -26,6 +31,8 @@ signals:
   void emitString(const QString &str);
 
   private:
-  Key key[key_max];
+  Key *key[key_max];
 
 };
+
+#endif

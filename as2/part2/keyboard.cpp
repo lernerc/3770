@@ -1,24 +1,44 @@
 #include "keyboard.h"
+#include "key.h"
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QString>
 
+#include <iostream>
+
+const QString keys[key_max] =
+{"1","2","3","4","5","6","7","8","9","*","0","#"};
 
 Keyboard::Keyboard(QWidget *p) : QWidget(p) {
-   for(int i = 0; i <= 9; i++) {
-      key[i] = Key(i+'0', 250, 1.0, this);
+   for(int i = 0; i < key_max; i++) {
+      key[i] = new Key( keys[i], 250, 1.0, this);
    }
-   key[10] = Key('*', 250, 1.0, this);
-   key[11] = Key('#', 250, 1.0, this);
+
+   QHBoxLayout *row[4];
+   for(int i = 0; i < 4; i++) {
+      row[i] = new QHBoxLayout();
+   }
+   for(int i = 0; i < 4; i++) {
+      for(int j = 0; j < 3; j++) {
+	 row[i]->addWidget(key[i*3+j]);
+      }
+   }
    
+   QVBoxLayout *layout = new QVBoxLayout();
+   for(int i = 0; i < 4; i++)
+      layout->addLayout(row[i]);
+   this->setLayout(layout);
 }
 
 void Keyboard::setDelay( int d ) {
    for(int i = 0; i < key_max; i++) {
-      key[i].setDelay(d);
+      key[i]->setDelay(d);
    }
 }
 
 void Keyboard::setTolerance( qreal t ) {
    for(int i = 0; i < key_max; i++) {
-      key[i].setTolerance(t);
+      key[i]->setTolerance(t);
    }
 }
 
