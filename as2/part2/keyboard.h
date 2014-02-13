@@ -5,6 +5,8 @@
 // The header for Key for assignment # 2 part 2
 //*****************************************************************************
 #include <QWidget>
+#include "key.h"
+const int key_max = 12;
 
 class Keyboard : public QWidget {
 
@@ -22,5 +24,8 @@ public slots:
 signals:
 
   void emitString(const QString &str);
+
+  private:
+  Key key[key_max];
 
 };

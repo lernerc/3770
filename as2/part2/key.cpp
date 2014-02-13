@@ -5,11 +5,13 @@
 // The implementation file for Key for assignment # 2 part 2
 //*****************************************************************************
 #include "key.h"
+#include <QString>
+#include <QTimer>
+// do something with the a time interval and a signal in QTimer for the delay stuff
 
-Key::Key(const QString &d, int del, qreal tol, QWidget *p) : QLabel(p) {
+Key::Key(const QString &d, int del, qreal tol, QWidget *p) : QLabel(d, p) {
    delay = del;
    tolerance = tol;
-   // do something with d
 }
 
 void Key::setDelay(int d) {
@@ -20,7 +22,11 @@ void Key::setTolerance(qreal t) {
    tolerance = t;
 }
 
-/*void Key::emitString(const QString &str) {
+void Key::enterEvent(QEvent *event) {
+
 
 }
-*/
+
+void Key::leaveEvent(QEvent *event) {
+
+}

@@ -4,13 +4,22 @@
 // Class: CPSC 3770
 // The header for PicViewer for assignment # 2 part 1
 //*****************************************************************************
+
+#ifndef PIC_VIEWER_H
+#define PIC_VIEWER_H
+
 #include <QWidget>
 
 class QImage;
 class QMouseEvent;
 class QPaintEvent;
+class QSizeF;
+class QPointF;
 
 class PicViewer : public QWidget {
+
+   Q_OBJECT
+   
   public:
    PicViewer(QWidget *parent = 0);
    void loadPic(const QString &name);
@@ -26,4 +35,7 @@ class PicViewer : public QWidget {
    QPoint cursor;
    QPoint modeStart;
    QPointF topLeft;
+   QSizeF wantSize;
 };
+
+#endif

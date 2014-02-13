@@ -10,8 +10,11 @@
 #include <QImage>
 #include <QPainter>
 #include <QMessageBox>
+#include <QRectF>
+
 #include <iostream>
 #include <cmath>
+
 // 0 Normal Mode
 // 1 Move Mode use setMouseTracking
 // 2 Zoom Mode - each pixel move you multiply by 1.02 so pow(1.02, pixel moves)
@@ -38,6 +41,7 @@ void PicViewer::loadPic(const QString &name) {
 void PicViewer::mouseReleaseEvent(QMouseEvent *event) {
    if(event->button() == Qt::LeftButton) {
       topLeft = want.topLeft();
+      wantSize = want.size();
       mode++;
       mode %= 3;
       modeStart = event->pos();
@@ -61,7 +65,7 @@ void PicViewer::paintEvent(QPaintEvent *event) {
       // move mode
       want = QRectF(topLeft.x() + modeStart.x() - cursor.x(),
 		    topLeft.y() + modeStart.y() - cursor.y(),
-	 image.size().width(), image.size().height());
+	 want.size().width(), want.size().height());
       painter.drawImage(totalImage, image, want);
       
       
@@ -73,7 +77,7 @@ void PicViewer::paintEvent(QPaintEvent *event) {
       // zoom mode assume zooming around top left corner
       double mult = std::pow(1.02, modeStart.y() - cursor.y());
       want = QRectF( want.topLeft().x(), want.topLeft().y(),
-		     image.size().width() * mult, image.size().height() * mult);
+		     wantSize.width() * mult, wantSize.height() * mult);
       painter.drawImage(totalImage, image, want);
 
       // two rectanges one inside the other beside the cursor
