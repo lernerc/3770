@@ -12,6 +12,8 @@
 #include <QLabel>
 #include <QSize>
 
+class QTimer;
+
 class Key : public QLabel {
 
   Q_OBJECT
@@ -32,7 +34,10 @@ public:
    virtual void enterEvent(QEvent *event);
    virtual void leaveEvent(QEvent *event);
 
-  
+   private slots:
+
+   void 
+   
   signals:
    
    void emitString(const QString &str);
@@ -40,5 +45,6 @@ public:
   private:
    int delay;
    qreal tolerance;
+   QTimer time;
 };
 #endif
