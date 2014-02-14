@@ -7,11 +7,16 @@
 #include "key.h"
 #include <QString>
 #include <QTimer>
+#include <QPalette>
 // do something with the a time interval and a signal in QTimer for the delay stuff
 
 Key::Key(const QString &d, int del, qreal tol, QWidget *p) : QLabel(d, p) {
    delay = del;
    tolerance = tol;
+   setAlignment(Qt::AlignCenter);
+   QPalette colors;
+   setAutoFillBackground(true);
+   setPalette(QPalette(Qt::black, Qt::white));
 }
 
 void Key::setDelay(int d) {
