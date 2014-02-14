@@ -14,7 +14,6 @@ Key::Key(const QString &d, int del, qreal tol, QWidget *p) : QLabel(d, p) {
    delay = del;
    tolerance = tol;
    setAlignment(Qt::AlignCenter);
-   QPalette colors;
    setAutoFillBackground(true);
    setPalette(QPalette(Qt::black, Qt::white));
 }
