@@ -30,7 +30,7 @@ class PicViewer : public QWidget {
    virtual void paintEvent(QPaintEvent *event);
   private:
    QImage image;
-   QRectF totalImage, want;
+   QRectF target, source;
    int mode;
    QPoint cursor;
    QPoint modeStart;

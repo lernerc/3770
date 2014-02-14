@@ -27,8 +27,8 @@ PicViewer::PicViewer(QWidget *parent) : QWidget(parent) {
 void PicViewer::loadPic(const QString &name) {
    mode = 0;
    if(image.load(name)) {
-      totalImage = QRectF(0,0, image.size().width(), image.size().height());
-      want = QRectF(0,0, image.size().width(), image.size().height());
+      target = QRectF(0,0, image.size().width(), image.size().height()); 
+      source = QRectF(0,0, image.size().width(), image.size().height());
       update();
    } else {
       QMessageBox notLoaded(QMessageBox::Critical, QString("Loading Error"),
@@ -40,8 +40,8 @@ void PicViewer::loadPic(const QString &name) {
 
 void PicViewer::mouseReleaseEvent(QMouseEvent *event) {
    if(event->button() == Qt::LeftButton) {
-      topLeft = want.topLeft();
-      wantSize = want.size();
+      topLeft = target.topLeft();
+      wantSize = source.size();
       mode++;
       mode %= 3;
       modeStart = event->pos();
@@ -59,26 +59,29 @@ void PicViewer::paintEvent(QPaintEvent *event) {
 
    // QPainter has a function drawImage to render the image at different sizes
    QPainter painter(this);
-   if(mode == 0) {
-      painter.drawImage(totalImage, image, want);
-   } else if(mode == 1) {
+   if(mode == 0)
+      painter.drawImage(target, image, source);
+   else if(mode == 1) {
+      
       // move mode
-      want = QRectF(topLeft.x() + modeStart.x() - cursor.x(),
-		    topLeft.y() + modeStart.y() - cursor.y(),
-	 want.size().width(), want.size().height());
-      painter.drawImage(totalImage, image, want);
-      
-      
-      
+      target =  QRectF(topLeft.x() + cursor.x() - modeStart.x(),
+		       topLeft.y() + cursor.y() - modeStart.y(),
+		       target.size().width(), target.size().height());
+      source = QRectF(0, 0, source.size().width(), source.size().height());
+      painter.drawImage(target, image, source);
+            
       // two equally sized rectanges beside the cursor
       painter.drawRect( cursor.x() + 5, cursor.y() - 8, 10, 5);
       painter.drawRect( cursor.x() + 7, cursor.y() - 6, 10, 5);
+
    } else if(mode == 2) {
+
       // zoom mode assume zooming around top left corner
       double mult = std::pow(1.02, modeStart.y() - cursor.y());
-      want = QRectF( want.topLeft().x(), want.topLeft().y(),
-		     wantSize.width() * mult, wantSize.height() * mult);
-      painter.drawImage(totalImage, image, want);
+      target = QRectF( topLeft.x(), topLeft.y(),
+		       wantSize.width() * mult, wantSize.height() * mult);
+      source = QRectF( 0, 0, image.size().width() * mult, image.size().height() * mult);
+      painter.drawImage(target, image, source);
 
       // two rectanges one inside the other beside the cursor
       painter.drawRect( cursor.x() + 5, cursor.y() - 8, 10, 6);
