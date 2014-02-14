@@ -41,7 +41,7 @@ void PicViewer::loadPic(const QString &name) {
 void PicViewer::mouseReleaseEvent(QMouseEvent *event) {
    if(event->button() == Qt::LeftButton) {
       topLeft = target.topLeft();
-      wantSize = source.size();
+      wantSize = target.size();
       mode++;
       mode %= 3;
       modeStart = event->pos();
@@ -67,7 +67,6 @@ void PicViewer::paintEvent(QPaintEvent *event) {
       target =  QRectF(topLeft.x() + cursor.x() - modeStart.x(),
 		       topLeft.y() + cursor.y() - modeStart.y(),
 		       target.size().width(), target.size().height());
-      source = QRectF(0, 0, source.size().width(), source.size().height());
       painter.drawImage(target, image, source);
             
       // two equally sized rectanges beside the cursor
@@ -78,9 +77,9 @@ void PicViewer::paintEvent(QPaintEvent *event) {
 
       // zoom mode assume zooming around top left corner
       double mult = std::pow(1.02, modeStart.y() - cursor.y());
-      target = QRectF( topLeft.x(), topLeft.y(),
-		       wantSize.width() * mult, wantSize.height() * mult);
-      source = QRectF( 0, 0, image.size().width() * mult, image.size().height() * mult);
+      target = QRectF( target.topLeft().x(), target.topLeft().y(),
+		       wantSize.width() * mult,
+		       wantSize.height() * mult);
       painter.drawImage(target, image, source);
 
       // two rectanges one inside the other beside the cursor
