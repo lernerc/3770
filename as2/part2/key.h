@@ -45,6 +45,6 @@ public:
   private:
    int delay;
    qreal tolerance;
-   QTimer time;
+   QTimer* time;
 };
 #endif

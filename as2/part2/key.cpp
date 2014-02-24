@@ -17,6 +17,9 @@ Key::Key(const QString &d, int del, qreal tol, QWidget *p) : QLabel(d, p) {
    setAutoFillBackground(true);
    setPalette(QPalette(Qt::black, Qt::white));
    time.setInterval(tolerance);
+
+   connect(this, SLOT(enterEvent), time, SLOT(start()));
+   connect(this, SLOT(leaveEvent), time, SLOT(stop()));
 }
 
 void Key::setDelay(int d) {
@@ -25,16 +28,15 @@ void Key::setDelay(int d) {
 
 void Key::setTolerance(qreal t) {
    tolerance = t;
-   time.setInterval(tolerance);
+   time->setInterval(tolerance);
 }
 
 void Key::enterEvent(QEvent *event) {
-   time.start();
    // if considered stopped
    // emitString(text());
 
 }
 
 void Key::leaveEvent(QEvent *event) {
-   time.stop();
+
 }

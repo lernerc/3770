@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
   PicViewer *p = new PicViewer();
 
   // p->loadPic("non-existance");
-  p->loadPic("small.jpg");
+  p->loadPic("/home/lernerc9/3770/as2/part1/small.jpg");
 
   p->show();
 
