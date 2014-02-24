@@ -13,6 +13,7 @@
 #include <QSize>
 
 class QTimer;
+class QPoint;
 
 class Key : public QLabel {
 
@@ -34,10 +35,10 @@ public:
    virtual void enterEvent(QEvent *event);
    virtual void leaveEvent(QEvent *event);
 
-   private slots:
+/*   private slots:
 
    void 
-   
+*/ 
   signals:
    
    void emitString(const QString &str);
@@ -46,5 +47,6 @@ public:
    int delay;
    qreal tolerance;
    QTimer* time;
+   QPoint position;
 };
 #endif
