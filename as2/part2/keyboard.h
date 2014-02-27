@@ -30,8 +30,13 @@ signals:
 
   void emitString(const QString &str);
 
+  private slots:
+
+  void addToString(const QString &str);
+
   private:
   Key *key[key_max];
+  QString numbers;
 
 };
 

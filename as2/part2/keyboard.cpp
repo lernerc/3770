@@ -21,7 +21,9 @@ Keyboard::Keyboard(QWidget *p) : QWidget(p) {
    for(int i = 0; i < 4; i++) {
       for(int j = 0; j < 3; j++) {
 	 row[i]->addWidget(key[i*3+j]);
-      }
+	 connect(key[i*3+j], SIGNAL(emitString(const QString &)), 
+		 this, SLOT(addToString(const QString&)));
+     }
    }
    
    QVBoxLayout *layout = new QVBoxLayout();
@@ -42,3 +44,7 @@ void Keyboard::setTolerance( qreal t ) {
    }
 }
 
+void Keyboard::addToString(const QString &str) {
+  numbers += str;
+  emitString(numbers);
+}

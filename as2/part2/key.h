@@ -14,6 +14,7 @@
 
 class QTimer;
 class QPoint;
+class QMouseEvent;
 
 class Key : public QLabel {
 
@@ -29,6 +30,7 @@ public:
    
    void setDelay(int d);
    void setTolerance(qreal t);
+   void mouseMoveEvent(QMouseEvent *event);
    
   protected:
    
