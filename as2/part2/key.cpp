@@ -21,11 +21,14 @@ Key::Key(const QString &d, int del, qreal tol, QWidget *p) : QLabel(d, p) {
    setPalette(QPalette(Qt::black, Qt::white));
    time = new QTimer();
    time->setInterval(delay);
+   time->setSingleShot(true);
 
-/*   connect(this, SLOT(enterEvent), time, SLOT(start()));
-   connect(this, SLOT(leaveEvent), time, SLOT(stop()));
-*/
+   connect(time, SIGNAL(timeout()), this, SLOT(emitSignal()));
    QWidget::setMouseTracking(true);
+}
+void Key::emitSignal() {
+   emit emitString(QLabel::text());
+   emitted = true;
 }
 
 void Key::setDelay(int d) {
@@ -43,21 +46,23 @@ qreal dist(const QPoint& a, const QPoint& b) {
 }
 
 void Key::mouseMoveEvent(QMouseEvent *event) {
-   QLabel::mouseMoveEvent(event);
    if(dist(event->pos(), position) < tolerance) {
-     if(time->isActive())
-	 emitString(text());
    } else {
-      time->start();
+      if(!emitted)
+	 time->start();
+      position = event->pos();
    }
    update();
 }
 
 
 void Key::enterEvent(QEvent *event) {
-  time->start();
+   time->start();
+   position = QCursor::pos();
+   emitted = false;
 }
 
 void Key::leaveEvent(QEvent *event) {
-  time->stop();
+   time->stop();
+
 }

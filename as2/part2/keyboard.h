@@ -36,7 +36,6 @@ signals:
 
   private:
   Key *key[key_max];
-  QString numbers;
 
 };
 

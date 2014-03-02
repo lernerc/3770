@@ -45,6 +45,5 @@ void Keyboard::setTolerance( qreal t ) {
 }
 
 void Keyboard::addToString(const QString &str) {
-  numbers += str;
-  emitString(numbers);
+   emitString(str);
 }

@@ -31,6 +31,7 @@ public:
    void setDelay(int d);
    void setTolerance(qreal t);
    void mouseMoveEvent(QMouseEvent *event);
+   void emitSignal();
    
   protected:
    
@@ -50,5 +51,6 @@ public:
    qreal tolerance;
    QTimer* time;
    QPoint position;
+   bool emitted;
 };
 #endif
