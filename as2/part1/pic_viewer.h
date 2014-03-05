@@ -32,10 +32,7 @@ class PicViewer : public QWidget {
    QImage image;
    QRectF target, source;
    int mode;
-   QPoint cursor;
-   QPoint modeStart;
-   QPointF topLeft;
-   QSizeF wantSize;
+   QPoint move, cursor;
 };
 
 #endif

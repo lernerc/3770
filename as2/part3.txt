@@ -1,0 +1,15 @@
+Name: Camara Lerner
+SN: 001150339
+Class: CPSC 3770
+Short answer questions for assignment 2 in part 3
+
+1. Given our discussion about the human in class, what is an advantage of accompanying our cursor with a graphic to indicate mode in Part I of this assignment?
+
+
+
+2. Use the interaction framework (discussed in class) to analyze the interaction involved in using (a) standard scrollbars and (b) mouse dragging to move an image (as in Part I). Compare these two interaction styles at each translation (user to input, input to system, etc). Be sure to include Fitt's Law in your analysis, as well as recognition vs. recall. Based strictly on your analysis, which interaction style is preferable? Why?
+
+
+
+3. Use the interaction framework (discussed in class) to analyze the interaction involved in text entry using a clickable on-screen keyboard and a traceable onscreen keyboard (like the one from Part II). Compare these two interaction styles at each translation (user to input, input to system, etc). Be sure to use concepts discussed in class. Based strictly on your analysis, which interaction style is preferable? Why?
+

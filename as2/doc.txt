@@ -1,11 +1,11 @@
 Name: Camara Lerner
 SN: 001150339
 
-Part 1 ()
-Files: pic_viewer.h pic_viewer.cpp
+Part 1 (Working)
+Files: pic_viewer.h pic_viewer.cpp test.cpp
 
-Part 2 ()
-Files: key.h key.cpp keyboard.h keyboard.cpp
+Part 2 (Working)
+Files: key.h key.cpp keyboard.h keyboard.cpp phone.h phone.cpp testPhone.cpp
 
 Part 3 ()
 Files: part3.txt

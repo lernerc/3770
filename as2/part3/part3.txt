@@ -1,5 +1,0 @@
-Name: Camara Lerner
-SN: 001150339
-Class: CPSC 3770
-Short answer questions for assignment 2 in part 3
-
