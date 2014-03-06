@@ -5,11 +5,24 @@ Short answer questions for assignment 2 in part 3
 
 1. Given our discussion about the human in class, what is an advantage of accompanying our cursor with a graphic to indicate mode in Part I of this assignment?
 
-Using a cursor graphic to indicate the mode is because our working memory is limited and we have a hard time keeping track of which mode we are in, since it keeps changing.
+Using a cursor graphic to indicate the mode because we have an easier time recognizing which mode we are in than we do recalling which mode we were last in before we clicked the mouse and then which mode is next in the order.
 
 2. Use the interaction framework (discussed in class) to analyze the interaction involved in using (a) standard scrollbars and (b) mouse dragging to move an image (as in Part I). Compare these two interaction styles at each translation (user to input, input to system, etc). Be sure to include Fitt's Law in your analysis, as well as recognition vs. recall. Based strictly on your analysis, which interaction style is preferable? Why?
 
+ (a) For the interaction framework with articulation the standard scrollbar is familiar, but the fact that getting to the scrollbar according to Fitt’s Law makes it harder because you have to go to the small scroll bar to move the image.
+The performance and presentation are fairly straightforward since they are usually already implemented. 
+But the observation is sometimes hard if the scrollbar movement does not exactly map to the image movement, so we have to recall the image and make sure that we moved the scrollbar the right amount, because the scrollbar movement is proportional to the image size. 
 
+(b) The articulation uses the mouse to move an image is even easier because the moving the image is very similar to moving objects and the movement is done immediately with the mouse movement on the spot. 
+The performance and presentation is fairly easy to implement, as shown in the assignment. 
+The observation for the user is even easier because the image is moving the same amount as their mouse is, so the movement just has to be recognized.
 
 3. Use the interaction framework (discussed in class) to analyze the interaction involved in text entry using a clickable on-screen keyboard and a traceable onscreen keyboard (like the one from Part II). Compare these two interaction styles at each translation (user to input, input to system, etc). Be sure to use concepts discussed in class. Based strictly on your analysis, which interaction style is preferable? Why?
 
+Interaction Framework
+articulation - With Fitt’s Law the traceable onscreen keyboard is not all that good, because you have to swipe across the screen quickly and be fairly accurate where you pause the mouse, whereas with the clickable onscreen keyboard time is not an issue, because you move your hand across the screen to hit the button at any speed you want.
+performance - it is harder to code for an amount of time spent on a key with a distance requirement than it is to just recognizing a single tap of a key.
+presentation - The presentation of this data is done the same way
+observation - There is a slight delay for the output with the swiping so it may take longer to get the output, which could frustrate people and make them type keys multiple times and then have to backspace lots.
+
+This makes the clickable onscreen keyboard preferable, because it is easier to use for articulation, it is easier to recognize the keys pressed for performance, and easier to observe the changes because there is no delay to read the key. The presentation for both is about the same.
