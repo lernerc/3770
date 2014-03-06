@@ -5,7 +5,7 @@ Short answer questions for assignment 2 in part 3
 
 1. Given our discussion about the human in class, what is an advantage of accompanying our cursor with a graphic to indicate mode in Part I of this assignment?
 
-
+Using a cursor graphic to indicate the mode is because our working memory is limited and we have a hard time keeping track of which mode we are in, since it keeps changing.
 
 2. Use the interaction framework (discussed in class) to analyze the interaction involved in using (a) standard scrollbars and (b) mouse dragging to move an image (as in Part I). Compare these two interaction styles at each translation (user to input, input to system, etc). Be sure to include Fitt's Law in your analysis, as well as recognition vs. recall. Based strictly on your analysis, which interaction style is preferable? Why?
 
