@@ -44,18 +44,19 @@ void PicViewer::mouseReleaseEvent(QMouseEvent *event) {
       mode %= 3;
    }
    drawHere = event->pos();
-   //  cursor = event->pos();
+   cursor = event->pos();
    update();
 }
 
 void PicViewer::mouseMoveEvent(QMouseEvent *event) {
+   move = event->pos() - cursor;
+   cursor = event->pos();
    drawHere = event->pos();
    update();
 }
 
 void PicViewer::paintEvent(QPaintEvent *event) {
-   move = QCursor::pos() - cursor;
-   
+     
    // QPainter has a function drawImage to render the image at different sizes
    QPainter painter(this);
    if(mode == 0)
@@ -87,6 +88,4 @@ void PicViewer::paintEvent(QPaintEvent *event) {
       painter.drawRect( drawHere.x() + 5, drawHere.y() - 8, 10, 6);
       painter.drawRect( drawHere.x() + 7, drawHere.y() - 6, 6, 2);
    }
-   cursor = QCursor::pos();
-
 }

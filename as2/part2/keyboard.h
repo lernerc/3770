@@ -2,7 +2,7 @@
 // Name: Camara Lerner
 // SN: 001150339
 // Class: CPSC 3770
-// The header for Key for assignment # 2 part 2
+// The header for Keyboard for assignment # 2 part 2
 //*****************************************************************************
 #ifndef KEYBOARD_H
 #define KEYBOARD_H

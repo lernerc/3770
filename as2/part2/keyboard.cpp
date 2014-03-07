@@ -1,3 +1,9 @@
+//*****************************************************************************
+// Name: Camara Lerner
+// SN: 001150339
+// Class: CPSC 3770
+// The implementation file for Keyboard for assignment # 2 part 2
+//*****************************************************************************
 #include "keyboard.h"
 #include "key.h"
 #include <QVBoxLayout>

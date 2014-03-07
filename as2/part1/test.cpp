@@ -2,7 +2,7 @@
 // Name: Camara Lerner
 // SN: 001150339
 // Class: CPSC 3770
-// The test file to run application for assignment # 2 part 1
+// The test file to run application for assignment # 2 part 1 (by Kev)
 //*****************************************************************************
 #include <QApplication>
 
