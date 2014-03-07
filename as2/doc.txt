@@ -7,5 +7,5 @@ Files: pic_viewer.h pic_viewer.cpp test.cpp
 Part 2 (Working)
 Files: key.h key.cpp keyboard.h keyboard.cpp phone.h phone.cpp testPhone.cpp
 
-Part 3 ()
+Part 3 (Finished)
 Files: part3.txt
