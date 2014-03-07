@@ -1,0 +1,5 @@
+to zip do
+# to zip up an entire directory
+zip -r filename
+# to unzip to tmp do
+unzip filename -d /tmp
