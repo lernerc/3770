@@ -25,6 +25,9 @@ class TestDrag : public QWidget {
   QRect background, icon, target;
   QPen icon_pen, target_pen;
   QPoint pos;
+  bool selected;
 };
+
+bool operator<(const QPoint &a, const QPoint &b);
 
 #endif
