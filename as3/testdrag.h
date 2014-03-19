@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QPen>
 #include <QPoint>
+#include <QVector>
 
 class QPaintEvent;
 class QRect;
@@ -26,6 +27,9 @@ class TestDrag : public QWidget {
   QPen icon_pen, target_pen;
   QPoint pos;
   bool selected;
+  QVector<QPoint> drag;
+  QVector<QPoint> drop;
+  QVector<QPoint> points;
 };
 
 bool operator<(const QPoint &a, const QPoint &b);

@@ -16,10 +16,15 @@ TestDrag::TestDrag(int w, int h, int iw, int tw, QWidget *p) : QWidget(p) {
    target_pen.setWidth(1);
    selected = false;
    update();
+   drag.push_back(icon.topLeft());
 }
 
 void TestDrag::reset() {
-
+   icon.moveTo(10, 10);
+   drag.clear();
+   drop.clear();
+   drag.push_back(icon.topLeft());
+   // reset any test information
 }
 
 void TestDrag::mousePressEvent(QMouseEvent* event) {
@@ -35,7 +40,12 @@ void TestDrag::mouseReleaseEvent(QMouseEvent* event) {
   selected = false;
   icon_pen.setWidth(1);
   target_pen.setWidth(1);
+  // if test done
+  // finish stuff
+  // else
+  drop.push_back(icon.topLeft());
   update();
+
 }
 
 void TestDrag::mouseMoveEvent(QMouseEvent* event) {
@@ -44,8 +54,26 @@ void TestDrag::mouseMoveEvent(QMouseEvent* event) {
 	&& ((icon.topLeft() + event->pos() - pos) > background.topLeft()))
 	icon.translate(event->pos() - pos);
      else {
-	// find a way to move to actual move to the edge
+	// moves the icon to the actual edge 
+	if(icon.bottomRight().x() + event->pos().x() - pos.x()
+	   > background.bottomRight().x())
+	   icon.moveTo(background.bottomRight().x() - icon.width(),
+		       pos.y());
+	if(icon.bottomRight().y() + event->pos().y() - pos.y()
+	   > background.bottomRight().y())
+	   icon.moveTo(pos.x(),
+		       background.bottomRight().y() - icon.height());
+	if(icon.topLeft().x() + event->pos().x() - pos.x()
+	   < background.topLeft().x())
+	   icon.moveTo(background.topLeft().x(), pos.y());
+	if(icon.topLeft().y() + event->pos().y() - pos.y()
+	   < background.topLeft().y())
+	   icon.moveTo(pos.x(), background.topLeft().y());
+	
 	selected=false;
+	// do I have to do this, because I force them to release the mouse to
+	// continue to move it
+        //drop.push_back(icon.topLeft());
      }
      pos = event->pos();
   }
