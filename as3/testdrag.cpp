@@ -40,22 +40,21 @@ void TestDrag::mouseReleaseEvent(QMouseEvent* event) {
 
 void TestDrag::mouseMoveEvent(QMouseEvent* event) {
   if(selected) {
-    if((icon.bottomRight() + event->pos() - pos < background.bottomRight())
-       && (icon.bottomLeft() + event->pos() - pos < background.bottomLeft())
-       && (icon.topRight() + event->pos() - pos > background.topRight())
-       && (icon.topLeft() + event->pos() - pos > background.topLeft()))
-      icon.translate(event->pos() - pos);
-    else
-      selected=false;
-    pos = event->pos();
+     if(((icon.bottomRight() + event->pos() - pos) < background.bottomRight())
+	&& ((icon.topLeft() + event->pos() - pos) > background.topLeft()))
+	icon.translate(event->pos() - pos);
+     else {
+	// find a way to move to actual move to the edge
+	selected=false;
+     }
+     pos = event->pos();
   }
-   
-   
-   if(target.contains(icon, true) && selected)
-      target_pen.setWidth(3);
-   else
-      target_pen.setWidth(1);
-   update();
+  
+  if(target.contains(icon, true) && selected)
+     target_pen.setWidth(3);
+  else
+     target_pen.setWidth(1);
+  update();
 }
 
 
@@ -69,7 +68,9 @@ void TestDrag::paintEvent(QPaintEvent *event) {
 }
 
 bool operator<(const QPoint &a, const QPoint &b) {
-  if(a.x() != b.x())
-    return a.x() < b.x();
-  return a.y() < b.y();
+   return a.x() < b.x() && a.y() < b.y();
+}
+
+bool operator>(const QPoint &a, const QPoint &b) {
+   return a.x() > b.x() && a.y() > b.y();
 }

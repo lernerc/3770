@@ -29,5 +29,6 @@ class TestDrag : public QWidget {
 };
 
 bool operator<(const QPoint &a, const QPoint &b);
+bool operator>(const QPoint &a, const QPoint &b);
 
 #endif
