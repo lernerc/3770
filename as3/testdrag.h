@@ -4,6 +4,9 @@
 #include <QPen>
 #include <QPoint>
 #include <QVector>
+#include <QTimer>
+#include <QTime>
+#include <QPainterPath>
 
 class QPaintEvent;
 class QRect;
@@ -15,6 +18,7 @@ class TestDrag : public QWidget {
   TestDrag(int w=600, int h=400, int iw=25, int tw=100, QWidget *p=0);
  public slots:
   void reset();
+  void addPoint();
  signals:
   void testComplete(int, double, int);
   protected:
@@ -26,13 +30,16 @@ class TestDrag : public QWidget {
   QRect background, icon, target;
   QPen icon_pen, target_pen;
   QPoint pos;
-  bool selected;
+  bool selected, isTest, testDone;
+  QPainterPath line;
   QVector<QPoint> drag;
   QVector<QPoint> drop;
-  QVector<QPoint> points;
+  QTimer* time;
+  QTime totalTime;
 };
 
 bool operator<(const QPoint &a, const QPoint &b);
 bool operator>(const QPoint &a, const QPoint &b);
+qreal calcDist(QVector<QPoint> a);
 
 #endif
