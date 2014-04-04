@@ -1,0 +1,60 @@
+Name: Camara Lerner
+SN: 001150339
+Class: CPSC 3770
+Short answer questions for assignment 3 in part 2
+
+1.
+I will use a one-tailed Matched Pair t-test.
+The users have one independent variable the input type, which has 2 levels the mouse or touchpad. The user does both levels of the IV, so it is a within group test. Which according to the table in the notes gives the Match Pair t-test. And since the hypothesis is that the mouse is faster than the touchpad this is a one-tailed test.
+T-test - 2.435 and P-value = 0.038
+Since the alpha value is 0.05 and the P-value is smaller this means that we reject the null hypothesis, which is that there is no difference between the mouse and touchpad or that the touchpad is faster than the mouse. 
+
+2.
+There are two independent variables, the user’s major and the internet browser preference. They both have 3 levels each, so there are 9 levels. This is also a within group study, because each participant tries all the browsers.  So by table in notes use Repeated Measures (RM) ANOVA, which is the Chi squared test.
+X^2=16.8 and P-value = 0.00211
+Since the alpha value is 0.04 and the P-value is smaller this means that we reject the null hypothesis that the major does not influence their prefered browser.
+
+3. a)
+   Mouse Fix
+   H[Mouse]
+   MPBPB[find and highlight error]
+   H[keyboard]
+   MK[correct key]
+   H[mouse]
+   MPBB[return cursor to end]
+   H[keyboard]
+
+   4*H + 3*M + 3*P + 4*B + K
+
+   Backspace N letters to Fix
+   M(N*K)[backspace]
+   M(N*K)[redo letters]
+
+   2*N*K + 2*M
+
+   b)
+   4*H + 3*M + 3*P +4*B + K = 2*N*K + 2*M
+   N = (4*H + M + 3*P + 4*B + K)/(2*K)
+
+   H = 0.4
+   M = 0.2
+   P = 1.1
+   B = 0.1
+   
+   4*H + M + 3*P + 4*B = 4*0.4 + 0.2 + 3*1.1 + 4*0.1 = 5.5
+
+   N = (5.5 + K)/(2*K)   
+
+   i.   K = 0.12
+        N = (5.5 + 0.12)/(2*0.12) = 23.417
+
+	For the good typist, the minimum number of characters away the mistake should be is 24. At this point, the time to use the mouse is 6.02 seconds, whereas the time to use the backspace key is 6.16 seconds. At 23 characters, the time to use the mouse is 6.02 seconds, where the time to use the backspace key is 5.92 seconds.
+ 
+   ii.  K = 0.28	
+        N = (5.5 + 0.28)/(2*0.28) = 10.321
+	For the good typist, the minimum number of characters away the mistake should be is 11. At this point, the time to use the mouse is 6.18 seconds, whereas the time to use the backspace key is 6.56 seconds. At 11 characters, the time to use the mouse is 6.18 seconds, where the time to use the backspace key is 6 seconds.
+
+   iii. K = 1.2
+        N = (5.5 + 1.2)/(2*1.2) = 2.792
+	For the good typist, the minimum number of characters away the mistake should be is 3. At this point, the time to use the mouse is 7.1 seconds, whereas the time to use the backspace key is 7.6 seconds. At 3 characters, the time to use the mouse is 7.1 seconds, where the time to use the backspace key is 5.2 seconds.
+     

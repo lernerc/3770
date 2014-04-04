@@ -1,4 +1,9 @@
-
+//*****************************************************************************
+// Name: Camara Lerner
+// SN: 001150339
+// Class: CPSC 3770
+// The TestApp implementation file for assignment # 3 part 1 by Kevin
+//*****************************************************************************
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>

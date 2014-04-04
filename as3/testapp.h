@@ -1,3 +1,9 @@
+//*****************************************************************************
+// Name: Camara Lerner
+// SN: 001150339
+// Class: CPSC 3770
+// The TestApp header file for assignment # 3 part 1 by Kevin
+//*****************************************************************************
 #ifndef TESTAPP_H
 #define TESTAPP_H
 
